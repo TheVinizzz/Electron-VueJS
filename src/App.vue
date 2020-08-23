@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar dark absolute>
+      <v-toolbar-title>Electron Teste</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content class="ramdamB">
+      <Home />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Home from "./components/Home";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
 
+  components: {
+    Home,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.barra {
+  height: 1px;
+}
+.ramdamB {
+  margin-top: 70px;
 }
 </style>
