@@ -19,6 +19,8 @@
 </template>
 
 <script>
+//import { ipcRenderer } from "electron";
+import { ipcRenderer } from "electron";
 import Pill from "./Pill";
 
 export default {
@@ -28,16 +30,16 @@ export default {
   data: function () {
     return {
       files: [],
-      groupedWords: [
-        { name: "you", amount: 900 },
-        { name: "he", amount: 874 },
-        { name: "i", amount: 500 },
-      ],
+      groupedWords: [],
     };
   },
   methods: {
     processSubtitles() {
-      console.log(this.files);
+      const paths = this.files.map((f) => f.path);
+      ipcRenderer.send("sub-process", paths);
+      ipcRenderer.on("sub-process", (event, resp) => {
+        this.groupedWords = resp;
+      });
     },
   },
 };
